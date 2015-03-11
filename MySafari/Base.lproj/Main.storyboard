@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -19,9 +20,6 @@
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eXg-Hb-Hhg">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="0.0" width="400" height="600"/>
-                                </variation>
                                 <connections>
                                     <outlet property="delegate" destination="vXZ-lx-hvc" id="KX2-VT-uhb"/>
                                 </connections>
@@ -30,24 +28,64 @@
                                 <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="URL" returnKeyType="go"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="16" y="28" width="368" height="30"/>
-                                </variation>
                             </textField>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="fGp-q5-120">
                                 <rect key="frame" x="-10" y="-10" width="20" height="20"/>
                                 <color key="color" red="1" green="0.40000000596046448" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="182" y="281" width="37" height="37"/>
-                                </variation>
                             </activityIndicatorView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rE2-ed-23m">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="wum-Vj-4Q6"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="wum-Vj-4Q6"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="wum-Vj-4Q6"/>
+                                    </mask>
+                                </variation>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="rE2-ed-23m" secondAttribute="bottom" id="2ts-F4-29R"/>
+                            <constraint firstItem="eXg-Hb-Hhg" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" id="3Yx-Z5-lHb"/>
+                            <constraint firstItem="5ok-OX-oIY" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="7Jm-dg-J4c"/>
+                            <constraint firstItem="rE2-ed-23m" firstAttribute="top" secondItem="eXg-Hb-Hhg" secondAttribute="bottom" id="Gk9-Cs-C08"/>
+                            <constraint firstAttribute="trailing" secondItem="eXg-Hb-Hhg" secondAttribute="trailing" id="Hae-dv-OSe"/>
+                            <constraint firstItem="rE2-ed-23m" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="MDj-Tz-pMY"/>
+                            <constraint firstItem="eXg-Hb-Hhg" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="RSA-kX-Zlj"/>
+                            <constraint firstAttribute="trailing" secondItem="rE2-ed-23m" secondAttribute="trailing" id="SZM-lD-NoW"/>
+                            <constraint firstItem="5ok-OX-oIY" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="8" id="V8O-dT-k8q"/>
+                            <constraint firstAttribute="centerY" secondItem="fGp-q5-120" secondAttribute="centerY" id="cKF-3E-BQC"/>
+                            <constraint firstAttribute="centerX" secondItem="fGp-q5-120" secondAttribute="centerX" id="pEE-CA-4Ej"/>
+                            <constraint firstItem="5ok-OX-oIY" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="xEe-aG-jfh"/>
+                        </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="eXg-Hb-Hhg"/>
                                 <exclude reference="5ok-OX-oIY"/>
                                 <exclude reference="fGp-q5-120"/>
+                                <exclude reference="rE2-ed-23m"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="3Yx-Z5-lHb"/>
+                                <exclude reference="Hae-dv-OSe"/>
+                                <exclude reference="RSA-kX-Zlj"/>
+                                <exclude reference="7Jm-dg-J4c"/>
+                                <exclude reference="V8O-dT-k8q"/>
+                                <exclude reference="xEe-aG-jfh"/>
+                                <exclude reference="cKF-3E-BQC"/>
+                                <exclude reference="pEE-CA-4Ej"/>
+                                <exclude reference="Gk9-Cs-C08"/>
+                                <exclude reference="MDj-Tz-pMY"/>
+                                <exclude reference="SZM-lD-NoW"/>
+                                <exclude reference="2ts-F4-29R"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -55,6 +93,21 @@
                                 <include reference="eXg-Hb-Hhg"/>
                                 <include reference="5ok-OX-oIY"/>
                                 <include reference="fGp-q5-120"/>
+                                <include reference="rE2-ed-23m"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="3Yx-Z5-lHb"/>
+                                <include reference="Hae-dv-OSe"/>
+                                <include reference="RSA-kX-Zlj"/>
+                                <include reference="7Jm-dg-J4c"/>
+                                <include reference="V8O-dT-k8q"/>
+                                <include reference="xEe-aG-jfh"/>
+                                <include reference="cKF-3E-BQC"/>
+                                <include reference="pEE-CA-4Ej"/>
+                                <include reference="Gk9-Cs-C08"/>
+                                <include reference="MDj-Tz-pMY"/>
+                                <include reference="SZM-lD-NoW"/>
+                                <include reference="2ts-F4-29R"/>
                             </mask>
                         </variation>
                     </view>
