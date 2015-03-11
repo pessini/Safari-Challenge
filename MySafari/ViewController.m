@@ -15,6 +15,11 @@
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
 @property (weak, nonatomic) IBOutlet UIButton *goBackButton;
 @property (weak, nonatomic) IBOutlet UIButton *goForwardButton;
+@property (weak, nonatomic) IBOutlet UIButton *stopLoadingButton;
+@property (weak, nonatomic) IBOutlet UIButton *reloadButton;
+
+@property (weak, nonatomic) IBOutlet UINavigationItem *addressBarNavigationItem;
+
 
 @property CGPoint pointNow;
 
@@ -27,6 +32,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    self.addressBarNavigationItem.title = @"My Safari App";
+
+    self.goBackButton.enabled = NO;
+    self.goForwardButton.enabled = NO;
+    self.stopLoadingButton.enabled = NO;
+    self.reloadButton.enabled = NO;
 
     // delegate textField programmatically instead of on storyboard like the webView
     self.urlTextField.delegate = self;
@@ -40,6 +51,15 @@
 -(void)webViewDidStartLoad:(UIWebView *)webView
 {
     [self.spinner startAnimating];
+
+    self.stopLoadingButton.enabled = YES;
+    self.reloadButton.enabled = YES;
+
+}
+
+-(void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    [self.spinner stopAnimating];
 
     if (![self.webView canGoBack])
     {
@@ -59,19 +79,14 @@
         self.goForwardButton.enabled = YES;
     }
 
-}
+    self.reloadButton.enabled = YES;
+    self.stopLoadingButton.enabled = NO;
 
--(void)webViewDidFinishLoad:(UIWebView *)webView
-{
-    [self.spinner stopAnimating];
+    NSString* title = [self.webView stringByEvaluatingJavaScriptFromString: @"document.title"];
+    self.addressBarNavigationItem.title = title;
 }
 
 #pragma mark -UIScrollView
-
--(void)scrollViewDidScrollToTop:(UIScrollView *)scrollView
-{
-//    NSLog(@"scrollViewDidScrollToTop");
-}
 
 -(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
     self.pointNow = scrollView.contentOffset;
@@ -92,7 +107,6 @@
         self.urlTextField.hidden = YES;
     }
 }
-
 
 #pragma mark -UITextField
 
@@ -122,6 +136,7 @@
 - (IBAction)onStopLoadingButtonPressed:(UIButton *)sender
 {
     [self.webView stopLoading];
+    [self.spinner stopAnimating];
 }
 
 - (IBAction)onReloadButtonPressed:(UIButton *)sender
