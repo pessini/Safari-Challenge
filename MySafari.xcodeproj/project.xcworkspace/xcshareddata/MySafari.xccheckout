@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>CA93DE96-1B69-4A66-859E-CB39410A26BC</string>
+	<key>IDESourceControlProjectName</key>
+	<string>MySafari</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>E363A0F12018063D79CFE9F454639379A8D0FECD</key>
+		<string>https://github.com/pessini/Safari-Challenge.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>MySafari.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>E363A0F12018063D79CFE9F454639379A8D0FECD</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/pessini/Safari-Challenge.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>E363A0F12018063D79CFE9F454639379A8D0FECD</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>E363A0F12018063D79CFE9F454639379A8D0FECD</string>
+			<key>IDESourceControlWCCName</key>
+			<string>MySafari</string>
+		</dict>
+	</array>
+</dict>
+</plist>
