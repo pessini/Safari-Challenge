@@ -8,13 +8,15 @@
 
 #import "ViewController.h"
 
-@interface ViewController () <UIWebViewDelegate, UITextFieldDelegate>
+@interface ViewController () <UIWebViewDelegate, UITextFieldDelegate, UIScrollViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property (weak, nonatomic) IBOutlet UITextField *urlTextField;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
 @property (weak, nonatomic) IBOutlet UIButton *goBackButton;
 @property (weak, nonatomic) IBOutlet UIButton *goForwardButton;
+
+@property CGPoint pointNow;
 
 - (void)loadUrlRequestFromString:(NSString *)string;
 
@@ -28,6 +30,8 @@
 
     // delegate textField programmatically instead of on storyboard like the webView
     self.urlTextField.delegate = self;
+
+    self.webView.scrollView.delegate = self;
 
 }
 
@@ -54,12 +58,41 @@
     {
         self.goForwardButton.enabled = YES;
     }
+
 }
 
 -(void)webViewDidFinishLoad:(UIWebView *)webView
 {
     [self.spinner stopAnimating];
 }
+
+#pragma mark -UIScrollView
+
+-(void)scrollViewDidScrollToTop:(UIScrollView *)scrollView
+{
+//    NSLog(@"scrollViewDidScrollToTop");
+}
+
+-(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    self.pointNow = scrollView.contentOffset;
+
+    // change the opacity of the textField
+    self.urlTextField.backgroundColor = [UIColor clearColor];
+}
+
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView {
+
+    // checking if it is scrolling up or down
+    // down - show textfield
+    if (scrollView.contentOffset.y <= self.pointNow.y) {
+        self.urlTextField.hidden = NO;
+        self.urlTextField.backgroundColor = [UIColor whiteColor];
+    // up - hide textField
+    } else if (scrollView.contentOffset.y > self.pointNow.y) {
+        self.urlTextField.hidden = YES;
+    }
+}
+
 
 #pragma mark -UITextField
 
@@ -78,6 +111,7 @@
 - (IBAction)onBackButtonPressed:(UIButton *)sender
 {
     [self.webView goBack];
+
 }
 
 - (IBAction)onForwardButtonPressed:(UIButton *)sender
@@ -93,6 +127,15 @@
 - (IBAction)onReloadButtonPressed:(UIButton *)sender
 {
     [self.webView reload];
+}
+
+- (IBAction)onPlusButtonPressed:(UIButton *)sender
+{
+    UIAlertView *alert = [UIAlertView new];
+    alert.title = @"YAY New Feature";
+    alert.message = @"Coming Soon!";
+    [alert addButtonWithTitle:@"Ok"];
+    [alert show];
 }
 
 #pragma mark -Helpers Methods
