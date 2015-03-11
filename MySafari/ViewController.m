@@ -13,6 +13,8 @@
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property (weak, nonatomic) IBOutlet UITextField *urlTextField;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
+@property (weak, nonatomic) IBOutlet UIButton *goBackButton;
+@property (weak, nonatomic) IBOutlet UIButton *goForwardButton;
 
 - (void)loadUrlRequestFromString:(NSString *)string;
 
@@ -34,6 +36,24 @@
 -(void)webViewDidStartLoad:(UIWebView *)webView
 {
     [self.spinner startAnimating];
+
+    if (![self.webView canGoBack])
+    {
+        self.goBackButton.enabled = NO;
+    }
+    else
+    {
+        self.goBackButton.enabled = YES;
+    }
+
+    if (![self.webView canGoForward])
+    {
+        self.goForwardButton.enabled = NO;
+    }
+    else
+    {
+        self.goForwardButton.enabled = YES;
+    }
 }
 
 -(void)webViewDidFinishLoad:(UIWebView *)webView
@@ -45,8 +65,34 @@
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
+    if (![textField.text hasPrefix:@"http://"]) {
+        textField.text = [NSString stringWithFormat:@"http://%@", textField.text];
+    }
+
     [self loadUrlRequestFromString:textField.text];
     return true;
+}
+
+#pragma mark IBAction
+
+- (IBAction)onBackButtonPressed:(UIButton *)sender
+{
+    [self.webView goBack];
+}
+
+- (IBAction)onForwardButtonPressed:(UIButton *)sender
+{
+    [self.webView goForward];
+}
+
+- (IBAction)onStopLoadingButtonPressed:(UIButton *)sender
+{
+    [self.webView stopLoading];
+}
+
+- (IBAction)onReloadButtonPressed:(UIButton *)sender
+{
+    [self.webView reload];
 }
 
 #pragma mark -Helpers Methods

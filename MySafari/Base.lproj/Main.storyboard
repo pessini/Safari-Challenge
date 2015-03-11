@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -33,18 +34,77 @@
                                 <rect key="frame" x="-10" y="-10" width="20" height="20"/>
                                 <color key="color" red="1" green="0.40000000596046448" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rE2-ed-23m">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rE2-ed-23m" userLabel="Button View">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kb0-XL-zVc">
+                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="&lt;"/>
+                                        <variation key="widthClass=compact" fixedFrame="YES">
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
+                                            <rect key="frame" x="8" y="5" width="46" height="30"/>
+                                        </variation>
+                                        <connections>
+                                            <action selector="onBackButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="PyK-52-og2"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fcz-k2-d2y">
+                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                        <state key="normal" title="&gt;"/>
+                                        <variation key="widthClass=compact" fixedFrame="YES">
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
+                                            <rect key="frame" x="62" y="5" width="46" height="30"/>
+                                        </variation>
+                                        <connections>
+                                            <action selector="onForwardButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="BPa-q6-7XJ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p7g-oG-7xs">
+                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                        <state key="normal" title="Reload"/>
+                                        <variation key="widthClass=compact" fixedFrame="YES">
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                            <rect key="frame" x="342" y="5" width="50" height="30"/>
+                                        </variation>
+                                        <connections>
+                                            <action selector="onReloadButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Gah-UF-shB"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QVa-h3-wpB">
+                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                        <state key="normal" title="X"/>
+                                        <variation key="widthClass=compact" fixedFrame="YES">
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                            <rect key="frame" x="288" y="5" width="46" height="30"/>
+                                        </variation>
+                                        <connections>
+                                            <action selector="onStopLoadingButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="dKm-yE-bks"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.059999999999999998" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="wum-Vj-4Q6"/>
                                 </constraints>
                                 <variation key="default">
+                                    <mask key="subviews">
+                                        <exclude reference="kb0-XL-zVc"/>
+                                        <exclude reference="Fcz-k2-d2y"/>
+                                        <exclude reference="p7g-oG-7xs"/>
+                                        <exclude reference="QVa-h3-wpB"/>
+                                    </mask>
                                     <mask key="constraints">
                                         <exclude reference="wum-Vj-4Q6"/>
                                     </mask>
                                 </variation>
                                 <variation key="widthClass=compact">
+                                    <mask key="subviews">
+                                        <include reference="kb0-XL-zVc"/>
+                                        <include reference="Fcz-k2-d2y"/>
+                                        <include reference="p7g-oG-7xs"/>
+                                        <include reference="QVa-h3-wpB"/>
+                                    </mask>
                                     <mask key="constraints">
                                         <include reference="wum-Vj-4Q6"/>
                                     </mask>
@@ -74,18 +134,18 @@
                                 <exclude reference="rE2-ed-23m"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="3Yx-Z5-lHb"/>
-                                <exclude reference="Hae-dv-OSe"/>
-                                <exclude reference="RSA-kX-Zlj"/>
+                                <exclude reference="2ts-F4-29R"/>
                                 <exclude reference="7Jm-dg-J4c"/>
                                 <exclude reference="V8O-dT-k8q"/>
                                 <exclude reference="xEe-aG-jfh"/>
                                 <exclude reference="cKF-3E-BQC"/>
                                 <exclude reference="pEE-CA-4Ej"/>
+                                <exclude reference="3Yx-Z5-lHb"/>
+                                <exclude reference="Hae-dv-OSe"/>
+                                <exclude reference="RSA-kX-Zlj"/>
                                 <exclude reference="Gk9-Cs-C08"/>
                                 <exclude reference="MDj-Tz-pMY"/>
                                 <exclude reference="SZM-lD-NoW"/>
-                                <exclude reference="2ts-F4-29R"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -96,22 +156,24 @@
                                 <include reference="rE2-ed-23m"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="3Yx-Z5-lHb"/>
-                                <include reference="Hae-dv-OSe"/>
-                                <include reference="RSA-kX-Zlj"/>
+                                <include reference="2ts-F4-29R"/>
                                 <include reference="7Jm-dg-J4c"/>
                                 <include reference="V8O-dT-k8q"/>
                                 <include reference="xEe-aG-jfh"/>
                                 <include reference="cKF-3E-BQC"/>
                                 <include reference="pEE-CA-4Ej"/>
+                                <include reference="3Yx-Z5-lHb"/>
+                                <include reference="Hae-dv-OSe"/>
+                                <include reference="RSA-kX-Zlj"/>
                                 <include reference="Gk9-Cs-C08"/>
                                 <include reference="MDj-Tz-pMY"/>
                                 <include reference="SZM-lD-NoW"/>
-                                <include reference="2ts-F4-29R"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="goBackButton" destination="kb0-XL-zVc" id="KDH-EA-dAH"/>
+                        <outlet property="goForwardButton" destination="Fcz-k2-d2y" id="Qov-2S-DaA"/>
                         <outlet property="spinner" destination="fGp-q5-120" id="Jcn-iv-wcF"/>
                         <outlet property="urlTextField" destination="5ok-OX-oIY" id="096-sw-xhh"/>
                         <outlet property="webView" destination="eXg-Hb-Hhg" id="MD3-lo-Rz5"/>
