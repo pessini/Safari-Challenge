@@ -23,10 +23,16 @@
                                     <outlet property="delegate" destination="vXZ-lx-hvc" id="fRy-5t-2IN"/>
                                 </connections>
                             </webView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UhT-La-UWu">
+                                <rect key="frame" x="16" y="28" width="568" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="urlTextField" destination="UhT-La-UWu" id="PsE-TD-XIJ"/>
                         <outlet property="webView" destination="Isy-PE-YMT" id="0eU-SA-gBN"/>
                     </connections>
                 </viewController>
